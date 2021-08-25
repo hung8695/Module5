@@ -1,0 +1,23 @@
+<h1>Danh sach Thanh pho</h1>
+<input type="text" [(ngModel)]="name"><button (click)="findByContainName(name)">Search</button>
+<table>
+  <tr>
+    <td>STT</td>
+    <td>Name</td>
+    <td>Area</td>
+    <td>Description</td>
+<!--    <td>Country</td>-->
+    <td>GDP</td>
+  </tr>
+  <tr *ngFor="let city of cities; index as i">
+    <td>{{i+1}}</td>
+    <td>{{city.name}}</td>
+    <td>{{city.area}}</td>
+    <td>{{city.description}}</td>
+<!--    <td>{{city.country.name}}</td>-->
+    <td>{{city.gdp}}</td>
+    <td><a [routerLink]="['/city/edit',city.id]">Edit</a></td>
+    <td><a [routerLink]="['/city/delete',city.id]">Delete</a></td>
+  </tr>
+</table>
+
