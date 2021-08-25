@@ -5,10 +5,12 @@
       <td>Name:</td>
       <td><input type="text" formControlName="name"></td>
     </tr>
+
      <tr>
       <td>Area:</td>
       <td><input type="number" formControlName="area"></td>
     </tr>
+
      <tr>
       <td>Gdp:</td>
       <td><input type="number" formControlName="gdp"></td>
@@ -21,7 +23,14 @@
       <td>Population:</td>
       <td><input type="number" formControlName="population"></td>
     </tr>
-
+    <tr>
+      <td>Country:</td>
+      <div formGroupName="country">
+      <select name="country" formControlName="id">
+        <option  *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+      </select>
+      </div>
+    </tr>
     <tr>
       <td></td>
       <td>

@@ -20,7 +20,7 @@ export class CityCreateComponent implements OnInit {
     gdp: new FormControl(),
     population: new FormControl(),
     country: new FormGroup({
-      name: new FormControl()
+      id: new FormControl()
     })
   });
   constructor(private cityService: CityService,
@@ -32,6 +32,7 @@ export class CityCreateComponent implements OnInit {
   getCountries() {
     this.countryService.getAllCountry().subscribe((countries) => {
       this.countries = countries;
+      console.log(countries);
     });
   }
   onSubmit() {
