@@ -20,6 +20,7 @@ export class BookEditComponent implements OnInit {
       // @ts-ignore
       this.id = +parammap.get('id');
       this.getBook(this.id);
+      console.log(this.id)
     })
   }
 
@@ -36,6 +37,7 @@ export class BookEditComponent implements OnInit {
   }
   update(id: number) {
 const book = this.bookForm.value;
+console.log(book);
 this.bookService.update(id, book).subscribe(() => {
 alert('Update book successfully!');
 }, error => {

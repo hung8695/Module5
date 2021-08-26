@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from "../book.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-book-delete',
@@ -10,7 +10,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class BookDeleteComponent implements OnInit {
   // @ts-ignore
-  cityForm: FormGroup;
+  bookForm: FormGroup;
   // @ts-ignore
   id: number;
   constructor(private bookService: BookService,
@@ -19,14 +19,28 @@ export class BookDeleteComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parammap: ParamMap) => {
 // @ts-ignore
       this.id = +parammap.get('id');
-this.getBook(this.id);
+// @ts-ignore
+      this.getBook(this.id);
     })
   }
 
   ngOnInit(): void {
   }
-  getBook() {
-
+  getBook(id: number) {
+return this.bookService.findById(id).subscribe((book) => {
+    this.bookForm =new FormGroup({
+      title: new FormControl(book.title),
+      author: new FormControl(book.author),
+      description: new FormControl(book.description)
+    })
+})
+  }
+  delete(id: number) {
+return this.bookService.delete(id).subscribe(() => {
+this.router.navigate(['/book/list']);
+}, error => {
+  console.log(error);
+})
   }
 
 }

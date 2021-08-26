@@ -4,6 +4,7 @@ import {BookListComponent} from "./book-list/book-list.component";
 import {ViewComponent} from "./view/view.component";
 import {BooCreateComponent} from "./boo-create/boo-create.component";
 import {BookEditComponent} from "./book-edit/book-edit.component";
+import {BookDeleteComponent} from "./book-delete/book-delete.component";
 
 const routes: Routes = [{
   path: 'book/list',
@@ -17,6 +18,9 @@ const routes: Routes = [{
   },
   {path: 'book/edit/:id',
   component: BookEditComponent
+  },
+  {path: 'book/delete/:id',
+  component: BookDeleteComponent
   }
 ];
 

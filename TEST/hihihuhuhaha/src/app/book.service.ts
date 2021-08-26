@@ -23,7 +23,7 @@ getAll(): Observable<Book []> {
 return this.httpClient.post<Book>('http://localhost:3000/books/', book);
   }
   update(id: number, book: Book): Observable<Book> {
-    return this.httpClient.put<Book> ('http://localhost:3000/books/', book);
+    return this.httpClient.put<Book> ('http://localhost:3000/books/' +id, book);
   }
   delete(id: number): Observable<Book> {
     return this.httpClient.delete<Book>('http://localhost:3000/books/' +id);
